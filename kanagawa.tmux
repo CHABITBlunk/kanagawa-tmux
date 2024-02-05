@@ -3,7 +3,7 @@
 # title      Kanagawa                                                 +
 # version    1.0.0                                                    +
 # repository https://github.com/chabitblunk/kanagawa-tmux             +
-# author     habit                                                    +
+# author     chabitblunk                                              +
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 RESET="#[fg=brightwhite,bg=#15161e,nobold,noitalics,nounderscore,nodim]"
@@ -46,7 +46,7 @@ zoom_number="#($SCRIPTS_PATH/custom-number.sh #P $zoom_id_style)"
 
 #+--- Bars LEFT ---+
 # Session name
-tmux set -g status-left "#[fg=#1f1f28,bg=#957fb8,bold] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[fg=#ffffff,bg=#957fb8,bold,nodim]#S $RESET"
+tmux set -g status-left "#[fg=#1f1f28,bg=#957fb8,bold] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[fg=#1f1f28,bg=#957fb8,bold,nodim]#S $RESET"
 
 #+--- Windows ---+
 # Focus
