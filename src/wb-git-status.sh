@@ -23,7 +23,7 @@ if [[ $PROVIDER == "github.com" ]]; then
     exit 1
   fi
 
-  PROVIDER_ICON="$RESET#[fg=#fafafa] "
+  PROVIDER_ICON="$RESET#[fg=#e6edf3] "
   if test "$BRANCH" != ""; then
     PR_COUNT=$(gh pr list --json number --jq 'length' | bc)
     REVIEW_COUNT=$(gh pr status --json reviewRequests --jq '.needsReview | length' | bc)
@@ -62,7 +62,7 @@ if [[ $REMOTE_DIFF > 0 ]]; then
 fi
 
 if [[ $PR_COUNT > 0 || $REVIEW_COUNT > 0 || $ISSUE_COUNT > 0 ]]; then
-  WB_STATUS="#[fg=#363646,bg=#16161d,bold] $PROVIDER_ICON $RESET$PR_STATUS$REVIEW_STATUS$ISSUE_STATUS$REMOTE_STATUS"
+  WB_STATUS="#[fg=#6e7681,bg=#0d1117,bold] $PROVIDER_ICON $RESET$PR_STATUS$REVIEW_STATUS$ISSUE_STATUS$REMOTE_STATUS"
 fi
 
 echo "$WB_STATUS"
