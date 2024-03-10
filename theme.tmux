@@ -27,7 +27,7 @@ SCRIPTS_PATH="$CURRENT_DIR/src"
 TMUX_VARS="$(tmux show -g)"
 PANE_BASE="$(echo "$TMUX_VARS" | grep pane-base-index | cut -d" " -f2 | bc)"
 
-default_window_id_style="digital"
+default_window_id_style="none"
 default_pane_id_style="hsquare"
 default_zoom_id_style="dsquare"
 
