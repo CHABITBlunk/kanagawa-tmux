@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd $1
-RESET="#[fg=brightwhite,bg=#16161d,nobold,noitalics,nounderscore,nodim]"
+RESET="#[fg=brightwhite,bg=#080808,nobold,noitalics,nounderscore,nodim]"
 BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
 PROVIDER=$(git config remote.origin.url | awk -F '@|:' '{print $2}')
 
@@ -19,11 +19,11 @@ REMOTE_STATUS=""
 
 if [[ $PROVIDER == "github.com" ]]; then
 
-  if ! command -v gh &> /dev/null; then
+  if ! command -v gh &>/dev/null; then
     exit 1
   fi
 
-  PROVIDER_ICON="$RESET#[fg=#fafafa] "
+  PROVIDER_ICON="$RESET#[fg=#e4e4e4] "
   if test "$BRANCH" != ""; then
     PR_COUNT=$(gh pr list --json number --jq 'length' | bc)
     REVIEW_COUNT=$(gh pr status --json reviewRequests --jq '.needsReview | length' | bc)
@@ -46,23 +46,23 @@ git fetch --atomic origin --negotiation-tip=HEAD
 REMOTE_DIFF="$(git diff --shortstat $(git rev-parse --abbrev-ref HEAD) origin/$(git rev-parse --abbrev-ref HEAD) 2>/dev/null | wc -l | bc)"
 
 if [[ $PR_COUNT > 0 ]]; then
-  PR_STATUS="#[fg=#3fb950,bg=#16161d,bold] ${RESET}${PR_COUNT} "
+  PR_STATUS="#[fg=#85dc85,bg=#080808,bold] ${RESET}${PR_COUNT} "
 fi
 
 if [[ $REVIEW_COUNT > 0 ]]; then
-  REVIEW_STATUS="#[fg=#d29922,bg=#16161d,bold] ${RESET}${REVIEW_COUNT} "
+  REVIEW_STATUS="#[fg=#c6c684,bg=#080808,bold] ${RESET}${REVIEW_COUNT} "
 fi
 
 if [[ $ISSUE_COUNT > 0 ]]; then
-  ISSUE_STATUS="#[fg=#3fb950,bg=#16161d,bold] ${RESET}${ISSUE_COUNT} "
+  ISSUE_STATUS="#[fg=#85dc85,bg=#080808,bold] ${RESET}${ISSUE_COUNT} "
 fi
 
 if [[ $REMOTE_DIFF > 0 ]]; then
-  REMOTE_STATUS="$RESET#[fg=#e82424,bold]  "
+  REMOTE_STATUS="$RESET#[fg=#ff5454,bold]  "
 fi
 
 if [[ $PR_COUNT > 0 || $REVIEW_COUNT > 0 || $ISSUE_COUNT > 0 ]]; then
-  WB_STATUS="#[fg=#363646,bg=#16161d,bold] $PROVIDER_ICON $RESET$PR_STATUS$REVIEW_STATUS$ISSUE_STATUS$REMOTE_STATUS"
+  WB_STATUS="#[fg=#323437,bg=#080808,bold] $PROVIDER_ICON $RESET$PR_STATUS$REVIEW_STATUS$ISSUE_STATUS$REMOTE_STATUS"
 fi
 
 echo "$WB_STATUS"
