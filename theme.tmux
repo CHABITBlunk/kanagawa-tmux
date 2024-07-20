@@ -7,7 +7,7 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 RESET="#[fg=brightwhite,bg=#15161e,nobold,noitalics,nounderscore,nodim]"
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 tmux set -g status-left-length 80
 tmux set -g status-right-length 150
@@ -52,7 +52,7 @@ tmux set -g status-left "#[fg=#1f1f28,bg=#957fb8,bold] #{?client_prefix,󰠠 ,#[
 # Focus
 tmux set -g window-status-current-format "#[fg=#98bb6c,bg=#1f1f28]   #[fg=#c8c093]$window_number #[bold,nodim]#W#[nobold,dim]#{?window_zoomed_flag, $zoom_number, $custom_pane} #{?window_last_flag,,} "
 # Unfocused
-tmux set -g window-status-format "#[fg=#dcd7ba,bg=default,none,dim]   $window_number #W#[nobold,dim]#{?window_zoomed_flag, $zoom_number, $custom_pane}#[fg=yellow,blink] #{?window_last_flag,󰁯 ,} "
+tmux set -g window-status-format "#[fg=#dcd7ba,bg=default,none,dim]   $window_number #W#[nobold,dim]#{?window_zoomed_flag, $zoom_number, $custom_pane}"
 
 #+--- Bars RIGHT ---+
 tmux set -g status-right "  %Y-%m-%d #[]❬ %H:%M $git_status$wb_git_status"
